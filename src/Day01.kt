@@ -1,17 +1,15 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
-
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
-
-    // test if implementation meets criteria from the description, like:
+    var maxCalories = 0
+    var totalCalories = 0
     val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    testInput.forEach {
+        if (it.isEmpty()) {
+            if (maxCalories < totalCalories) maxCalories = totalCalories
+            totalCalories = 0
+        } else {
+            totalCalories += it.toInt()
+        }
+    }
 
-    val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+    println("$maxCalories") // 71023
 }
